@@ -4,7 +4,9 @@ import "../src/components/bg1"
 const meta = {
   title: 'Example/Button',
   tags: ['autodocs'],
-  render: () => `<bg-1></bg-1>`,
+  render: () => `<bg-1 instances="10" palette="#508991 #74B3CE #004346 #09BC8A" background="#172A3A">
+    <h2> Well Hello There</h2>
+  </bg-1>`,
 }
 
 export default meta;

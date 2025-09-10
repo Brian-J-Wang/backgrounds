@@ -1,5 +1,7 @@
-export class Circle extends HTMLElement {
-    private root: ShadowRoot;
+import { LitElement, html, type PropertyValues } from "lit";
+
+export class Circle extends LitElement {
+    element: HTMLElement | null = null;
 
     static get observedAttributes() {
         return ["radius", "color"]
@@ -7,12 +9,20 @@ export class Circle extends HTMLElement {
 
     constructor() {
         super();
-        this.root = this.attachShadow({ mode: "closed" })
         this.render();
     }
 
     render() {
-        this.root.innerHTML = `This should be a circle`;
+        return html`
+            <circle id="child" fill="black"/>
+        `
+    }
+
+    protected firstUpdated(_changedProperties: PropertyValues): void {
+        this.element = this.shadowRoot?.getElementById("child")!;
+        this.element.setAttribute("cx", "240");
+        this.element.setAttribute("cy", "240");
+        this.element.setAttribute("r" , "25");
     }
 }
 
