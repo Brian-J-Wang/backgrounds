@@ -51,7 +51,8 @@ export class Circle {
         circle.setAttribute("cy", this.posY.toString());
         circle.setAttribute("r" , randomRange(config.radius.min, config.radius.max).toString());
         circle.setAttribute("fill", this.color);
-        circle.setAttribute("class", "circle")
+        circle.setAttribute("class", "circle");
+        circle.setAttribute("filter", "url(#blurElement)");
 
         this.element = circle;
     }

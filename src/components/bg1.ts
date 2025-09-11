@@ -28,19 +28,19 @@ export class BG1 extends LitElement {
         .body {
             display: flex;
             position: relative;
-            width: 480px;
-            height: 480px;
+            width: 960px;
+            height: 960px;
         }
 
         .content {
             position: absolute;
+            width: 100%;
+            height: 100%;
             z-index: 2;
+            backdrop-filter: blur(4px);
         }
 
-        .background {
-            display: flex;
-            width: 100%;
-            height: 100%
+        .svg {
             position: absolute;
             z-index: 1;
         }
@@ -110,10 +110,7 @@ export class BG1 extends LitElement {
         
         clearInterval(this.intervalID);
     }   
-    
-    updateCircle(data: circleData) {
-        
-    }
+
     
     spawnCircle() {
         const rect = this.getBoundingClientRect();
@@ -147,10 +144,8 @@ export class BG1 extends LitElement {
                 <div class="content">
                     <slot></slot>
                 </div>
-                <svg class="svg" id="svg-content" width="100%" height="100%" xmls="http://www.w3.org/2000/svg" style="background-color: ${this.tryGetAttribute('background', '#292929')}; "/>
-                    <filter>
-                        
-                    </filter>
+                <svg class="svg" id="svg-content" width="100%" height="100%" xmls="http://www.w3.org/2000/svg" style="background-color: ${this.tryGetAttribute('background', '#292929')};">
+
                 </svg>
             </div>`;
     }
